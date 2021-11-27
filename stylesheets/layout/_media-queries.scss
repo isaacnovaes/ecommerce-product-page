@@ -1,0 +1,48 @@
+@use "../abstracts/mixins" as mixin;
+
+@media screen and (min-width: 800px) {
+	header {
+		nav {
+			.nav-left {
+				width: 85%;
+				max-width: 650px;
+
+				#hamburger {
+					display: none;
+				}
+
+				.nav-links {
+					@include mixin.center-nav-elements;
+					width: 70%;
+					a {
+						padding: 10px;
+						color: var(--dark-grayish-blue);
+
+						&:hover {
+							transform: scale(1.2);
+						}
+					}
+				}
+			}
+			.nav-right {
+				width: 100px;
+
+				img:nth-child(1) {
+					cursor: pointer;
+					align-self: center;
+				}
+
+				img:nth-child(2) {
+					width: 50px;
+					height: calc(50px * 27.26 / 30);
+					object-fit: contain;
+				}
+			}
+		}
+	}
+
+	.nav-menu,
+	.bgBlur-mobile {
+		display: none;
+	}
+}

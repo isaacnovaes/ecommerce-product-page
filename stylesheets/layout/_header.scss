@@ -1,0 +1,77 @@
+@use "../abstracts/mixins" as mixin;
+
+header {
+	display: flex;
+	align-items: center;
+	height: 80px;
+	position: relative;
+	z-index: 1;
+
+	nav {
+		@include mixin.container;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.nav-left {
+			@include mixin.center-nav-elements;
+			width: 170px; // change width for desktop
+
+			.nav-links {
+				display: none;
+			}
+		}
+		.nav-right {
+			@include mixin.center-nav-elements;
+			width: 70px; // change width for desktop
+
+			img:nth-child(2) {
+				object-fit: contain;
+			}
+		}
+	}
+}
+
+.nav-menu {
+	position: absolute;
+	z-index: 4;
+	inset: 0;
+	right: 200px;
+	padding: 30px 20px;
+	background-color: var(--white);
+	opacity: 0;
+	transform: translateX(-200%);
+
+	.nav-menu-links {
+		margin-top: 30px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 150px;
+
+		a {
+			display: block;
+			padding: 10px 0;
+			color: var(--black);
+			font-weight: 700;
+		}
+	}
+}
+
+.nav-menu-active {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.bgBlur-mobile {
+	visibility: hidden;
+	position: absolute;
+	z-index: 3;
+	inset: 0;
+	background-color: var(--black-background);
+	backdrop-filter: blur(2px);
+}
+
+.show-bg {
+	visibility: visible;
+}
