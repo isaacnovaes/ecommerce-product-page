@@ -54,6 +54,10 @@ header {
 			padding: 10px 0;
 			color: var(--black);
 			font-weight: 700;
+
+			&:hover {
+				color: var(--orange);
+			}
 		}
 	}
 }
@@ -64,14 +68,11 @@ header {
 }
 
 .bgBlur-mobile {
+	// when in desktop, it is set to display none
 	visibility: hidden;
 	position: absolute;
 	z-index: 3;
 	inset: 0;
 	background-color: var(--black-background);
 	backdrop-filter: blur(2px);
-}
-
-.show-bg {
-	visibility: visible;
 }
