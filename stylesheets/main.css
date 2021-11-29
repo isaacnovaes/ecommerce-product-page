@@ -42,7 +42,9 @@ html:focus-within {
 }
 
 body {
+  min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
 }
 
 img {
@@ -173,7 +175,7 @@ header nav .nav-right img:nth-child(2) {
   z-index: 3;
   inset: 0;
   background-color: var(--black-background);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(5px);
 }
 
 .show-bg {
@@ -182,6 +184,8 @@ header nav .nav-right img:nth-child(2) {
 
 main {
   margin-bottom: 50px;
+  position: relative;
+  z-index: 1;
 }
 main .slider {
   height: 300px;
@@ -198,21 +202,18 @@ main .slider .slide {
   background-size: cover;
   transition: 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-main .slider .slide:nth-child(1) {
-  background-image: url("../images/image-product-1.jpg");
-}
-main .slider .slide:nth-child(2) {
-  background-image: url("../images/image-product-2.jpg");
-}
-main .slider .slide:nth-child(3) {
-  background-image: url("../images/image-product-3.jpg");
-}
-main .slider .slide:nth-child(4) {
-  background-image: url("../images/image-product-4.jpg");
+main .slider .slide img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
 }
 main .slider .button-left {
   left: 10px;
   background-image: url("../images/icon-previous.svg");
+}
+main .slider .button-right {
+  right: 10px;
+  background-image: url("../images/icon-next.svg");
 }
 main .slider button {
   display: block;
@@ -221,10 +222,9 @@ main .slider button {
   height: 35px;
   width: 35px;
   top: 50%;
-  right: 10px;
   border: none;
   border-radius: 50%;
-  background: var(--light-grayish-blue) url("../images/icon-next.svg") no-repeat center;
+  background: var(--light-grayish-blue) no-repeat center;
   background-size: 13 18;
   opacity: 0.8;
 }
@@ -340,12 +340,35 @@ main .purchase .purchase-content .input-block > button:hover {
   cursor: pointer;
 }
 
+.lightbox-modal {
+  display: none;
+}
+
 @media screen and (min-width: 500px) and (max-width: 899px) {
   main .slider {
     height: 500px;
   }
+  main .slider .slide img {
+    height: 500px;
+  }
 }
 @media screen and (min-width: 900px) {
+  body {
+    padding-bottom: 20px;
+  }
+
+  header nav {
+    position: relative;
+  }
+  header nav:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: var(--grayish-blue);
+    bottom: -18px;
+  }
   header nav .nav-left {
     width: 85%;
     max-width: 650px;
@@ -407,8 +430,11 @@ main .purchase .purchase-content .input-block > button:hover {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    margin-top: 35px;
     row-gap: 20px;
     column-gap: 10px;
+    position: relative;
+    z-index: 1;
   }
   main .slider {
     height: 500px;
@@ -420,8 +446,61 @@ main .purchase .purchase-content .input-block > button:hover {
     height: inherit;
     background-size: contain;
   }
+  main .slider .slide:hover {
+    cursor: pointer;
+  }
+  main .slider .slide img {
+    height: inherit;
+  }
   main .slider > button {
     display: none;
+  }
+  main .purchase {
+    width: calc(95% - 500px);
+  }
+  main .purchase .purchase-content > h1 {
+    font-size: 0.9rem;
+  }
+  main .purchase .purchase-content > h2 {
+    font-size: 2rem;
+    margin: 20px 0;
+  }
+  main .purchase .purchase-content > p {
+    font-size: 1.1rem;
+  }
+  main .purchase .purchase-content .number-data {
+    margin: 30px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+  main .purchase .purchase-content .number-data .price-with-discount {
+    font-size: 1.8rem;
+  }
+  main .purchase .purchase-content .number-data .price-with-discount::after {
+    top: 5px;
+  }
+  main .purchase .purchase-content .number-data .price-without-discount {
+    width: 100%;
+  }
+  main .purchase .purchase-content .input-block {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 25px;
+  }
+  main .purchase .purchase-content .input-block .input {
+    width: 45%;
+    min-width: 180px;
+  }
+  main .purchase .purchase-content .input-block .input button {
+    padding: 30px;
+  }
+  main .purchase .purchase-content .input-block > button {
+    padding: 20px;
+    min-width: 180px;
+    max-width: 50%;
   }
   main .thumbnail-container {
     height: 100px;
@@ -466,49 +545,128 @@ main .purchase .purchase-content .input-block > button:hover {
   main .thumbnail-container .thumbnail-selected::before {
     background-color: rgba(255, 255, 255, 0.438);
   }
-  main .purchase {
-    width: calc(95% - 500px);
+
+  .lightbox-modal {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 80vh;
+    margin-top: 10vh;
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: none;
+    place-items: center;
+    row-gap: 20px;
   }
-  main .purchase .purchase-content > h1 {
-    font-size: 0.9rem;
+  .lightbox-modal .close-lightbox-container {
+    width: 500px;
+    display: flex;
+    justify-content: flex-end;
   }
-  main .purchase .purchase-content > h2 {
-    font-size: 2rem;
-    margin: 20px 0;
+  .lightbox-modal .close-lightbox-container .button-close-lightbox {
+    display: block;
+    height: 35px;
+    width: 35px;
+    border: none;
+    background: no-repeat center url("../images/icon-close.svg");
+    background-size: 13 18;
+    opacity: 0.8;
   }
-  main .purchase .purchase-content > p {
-    font-size: 1.1rem;
+  .lightbox-modal .close-lightbox-container .button-close-lightbox:hover {
+    cursor: pointer;
   }
-  main .purchase .purchase-content .number-data {
-    margin: 30px 0;
+  .lightbox-modal .lightbox-slider {
+    height: 500px;
+    width: 500px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: #bd5903;
+  }
+  .lightbox-modal .lightbox-slider .lightbox-slide {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: 20px;
+    background: center no-repeat;
+    background-size: cover;
+    transition: 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  .lightbox-modal .lightbox-slider .lightbox-slide img {
+    width: 100%;
+    object-fit: contain;
+  }
+  .lightbox-modal .lightbox-slider .lightbox-button-left {
+    left: 0px;
+    background-image: url("../images/icon-previous.svg");
+  }
+  .lightbox-modal .lightbox-slider .lightbox-button-right {
+    right: 0px;
+    background-image: url("../images/icon-next.svg");
+  }
+  .lightbox-modal .lightbox-slider button {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    height: 35px;
+    width: 35px;
+    top: 50%;
+    border: none;
+    border-radius: 50%;
+    background: var(--light-grayish-blue) no-repeat center;
+    background-size: 13 18;
+    opacity: 0.8;
+  }
+  .lightbox-modal .lightbox-slider button:hover {
+    cursor: pointer;
+  }
+  .lightbox-modal .lightbox-thumbnail-container {
+    height: 100px;
+    width: 500px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    row-gap: 10px;
-    flex-wrap: wrap;
   }
-  main .purchase .purchase-content .number-data .price-with-discount {
-    font-size: 1.8rem;
+  .lightbox-modal .lightbox-thumbnail-container .thumbnail {
+    width: 20%;
+    border-radius: 20px;
+    background-size: contain;
+    position: relative;
   }
-  main .purchase .purchase-content .number-data .price-without-discount {
+  .lightbox-modal .lightbox-thumbnail-container .thumbnail:hover {
+    cursor: pointer;
+  }
+  .lightbox-modal .lightbox-thumbnail-container .thumbnail::before {
+    display: block;
+    content: " ";
+    position: absolute;
+    z-index: 5;
     width: 100%;
+    height: 99px;
+    inset: 0;
+    border-radius: 20px;
   }
-  main .purchase .purchase-content .input-block {
-    flex-direction: row;
-    flex-wrap: wrap;
-    column-gap: 25px;
+  .lightbox-modal .lightbox-thumbnail-container .thumbnail:nth-child(1) {
+    background-image: url("../images/image-product-1-thumbnail.jpg");
   }
-  main .purchase .purchase-content .input-block .input {
-    width: 45%;
-    min-width: 180px;
+  .lightbox-modal .lightbox-thumbnail-container .thumbnail:nth-child(2) {
+    background-image: url("../images/image-product-2-thumbnail.jpg");
   }
-  main .purchase .purchase-content .input-block .input button {
-    padding: 30px;
+  .lightbox-modal .lightbox-thumbnail-container .thumbnail:nth-child(3) {
+    background-image: url("../images/image-product-3-thumbnail.jpg");
   }
-  main .purchase .purchase-content .input-block > button {
-    padding: 20px;
-    min-width: 180px;
-    max-width: 50%;
+  .lightbox-modal .lightbox-thumbnail-container .thumbnail:nth-child(4) {
+    background-image: url("../images/image-product-4-thumbnail.jpg");
+  }
+  .lightbox-modal .lightbox-thumbnail-container .thumbnail-selected {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--orange);
+  }
+  .lightbox-modal .lightbox-thumbnail-container .thumbnail-selected::before {
+    background-color: rgba(255, 255, 255, 0.438);
+  }
+
+  .show-lightbox-modal {
+    display: grid;
   }
 }
 

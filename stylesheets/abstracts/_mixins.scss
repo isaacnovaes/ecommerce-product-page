@@ -13,3 +13,22 @@
 	justify-content: space-between;
 	align-items: center;
 }
+
+@mixin slider-button {
+	display: block;
+	position: absolute;
+	z-index: 2;
+	height: 35px;
+	width: 35px;
+	top: 50%;
+
+	border: none;
+	border-radius: 50%;
+	background: var(--light-grayish-blue) no-repeat center;
+	background-size: 13 18;
+	opacity: 0.8;
+
+	&:hover {
+		cursor: pointer;
+	}
+}

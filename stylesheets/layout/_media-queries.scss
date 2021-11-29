@@ -3,12 +3,30 @@
 @media screen and (min-width: 500px) and (max-width: 899px) {
 	main .slider {
 		height: 500px;
+
+		.slide img {
+			height: 500px;
+		}
 	}
 }
 
 @media screen and (min-width: 900px) {
+	body {
+		padding-bottom: 20px;
+	}
 	header {
 		nav {
+			position: relative;
+
+			&:before {
+				content: " ";
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: 1px;
+				background-color: var(--grayish-blue);
+				bottom: -18px;
+			}
 			.nav-left {
 				width: 85%;
 				max-width: 650px;
@@ -20,6 +38,7 @@
 				.nav-links {
 					@include mixin.center-nav-elements;
 					width: 70%;
+
 					a {
 						padding: 10px;
 						color: var(--dark-grayish-blue);
@@ -76,8 +95,11 @@
 		flex-wrap: wrap;
 		justify-content: space-between;
 		align-items: center;
+		margin-top: 35px;
 		row-gap: 20px;
 		column-gap: 10px;
+		position: relative;
+		z-index: 1;
 
 		.slider {
 			height: 500px;
@@ -88,12 +110,78 @@
 			.slide {
 				height: inherit;
 				background-size: contain;
+
+				&:hover {
+					cursor: pointer;
+				}
+
+				img {
+					height: inherit;
+				}
 			}
 
 			> button {
 				display: none;
 			}
 		}
+
+		.purchase {
+			width: calc(95% - 500px);
+			.purchase-content {
+				> h1 {
+					font-size: 0.9rem;
+				}
+
+				> h2 {
+					font-size: 2rem;
+					margin: 20px 0;
+				}
+
+				> p {
+					font-size: 1.1rem;
+				}
+
+				.number-data {
+					margin: 30px 0;
+					@include mixin.flex-center;
+					flex-wrap: wrap;
+					row-gap: 10px;
+
+					.price-with-discount {
+						font-size: 1.8rem;
+
+						&::after {
+							top: 5px;
+						}
+					}
+					.price-without-discount {
+						width: 100%;
+					}
+				}
+
+				.input-block {
+					flex-direction: row;
+					flex-wrap: wrap;
+					column-gap: 25px;
+
+					.input {
+						width: 45%;
+						min-width: 180px;
+
+						button {
+							padding: 30px;
+						}
+					}
+
+					> button {
+						padding: 20px;
+						min-width: 180px;
+						max-width: 50%;
+					}
+				}
+			}
+		}
+
 		.thumbnail-container {
 			height: 100px;
 			width: 500px;
@@ -143,58 +231,130 @@
 				}
 			}
 		}
+	}
 
-		.purchase {
-			width: calc(95% - 500px);
-			.purchase-content {
-				> h1 {
-					font-size: 0.9rem;
-				}
+	.lightbox-modal {
+		@include mixin.container;
+		height: 80vh;
+		margin-top: 10vh;
+		position: absolute;
+		inset: 0;
+		z-index: 4;
 
-				> h2 {
-					font-size: 2rem;
-					margin: 20px 0;
-				}
+		display: none; // when opened, toggle display grid
+		place-items: center;
+		row-gap: 20px;
 
-				> p {
-					font-size: 1.1rem;
-				}
+		.close-lightbox-container {
+			width: 500px;
+			display: flex;
+			justify-content: flex-end;
 
-				.number-data {
-					margin: 30px 0;
-					@include mixin.flex-center;
-					row-gap: 10px;
-					flex-wrap: wrap;
+			.button-close-lightbox {
+				display: block;
+				height: 35px;
+				width: 35px;
+				border: none;
+				background: no-repeat center url("../images/icon-close.svg");
+				background-size: 13 18;
+				opacity: 0.8;
 
-					.price-with-discount {
-						font-size: 1.8rem;
-					}
-					.price-without-discount {
-						width: 100%;
-					}
-				}
-
-				.input-block {
-					flex-direction: row;
-					flex-wrap: wrap;
-					column-gap: 25px;
-
-					.input {
-						width: 45%;
-						min-width: 180px;
-
-						button {
-							padding: 30px;
-						}
-					}
-
-					> button {
-						padding: 20px;
-						min-width: 180px;
-						max-width: 50%;
-					}
+				&:hover {
+					cursor: pointer;
 				}
 			}
 		}
+
+		.lightbox-slider {
+			height: 500px;
+			width: 500px;
+			position: relative;
+			overflow: hidden;
+			border-radius: 20px;
+			background-color: rgb(189, 89, 3); // hide the border of the slides
+
+			.lightbox-slide {
+				position: absolute;
+				inset: 0;
+				z-index: 1;
+				border-radius: 20px;
+				background: center no-repeat;
+				background-size: cover;
+				transition: 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+				img {
+					width: 100%;
+					object-fit: contain;
+				}
+			}
+
+			.lightbox-button-left {
+				left: 0px;
+				background-image: url("../images/icon-previous.svg");
+			}
+
+			.lightbox-button-right {
+				right: 0px;
+				background-image: url("../images/icon-next.svg");
+			}
+
+			button {
+				@include mixin.slider-button;
+			}
+		}
+
+		.lightbox-thumbnail-container {
+			height: 100px;
+			width: 500px;
+			display: flex;
+			justify-content: space-between;
+
+			.thumbnail {
+				width: 20%;
+				border-radius: 20px;
+				background-size: contain;
+				position: relative;
+
+				&:hover {
+					cursor: pointer;
+				}
+
+				&::before {
+					display: block;
+					content: " ";
+					position: absolute;
+					z-index: 5;
+					width: 100%;
+					height: 99px;
+					inset: 0;
+					border-radius: 20px;
+				}
+
+				&:nth-child(1) {
+					background-image: url("../images/image-product-1-thumbnail.jpg");
+				}
+				&:nth-child(2) {
+					background-image: url("../images/image-product-2-thumbnail.jpg");
+				}
+				&:nth-child(3) {
+					background-image: url("../images/image-product-3-thumbnail.jpg");
+				}
+				&:nth-child(4) {
+					background-image: url("../images/image-product-4-thumbnail.jpg");
+				}
+			}
+
+			.thumbnail-selected {
+				box-shadow: 0 0 0 2px white, 0 0 0 4px var(--orange);
+
+				&::before {
+					background-color: rgba(255, 255, 255, 0.438);
+				}
+			}
+		}
+	}
+
+	.show-lightbox-modal {
+		display: grid;
 	}
 }
