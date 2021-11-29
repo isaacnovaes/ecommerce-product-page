@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="E-commerce single page" />
 		<link
 			rel="icon"
 			type="image/png"
@@ -76,14 +77,43 @@
 
 		<main>
 			<div class="slider">
-				<div class="slide"></div>
-				<div class="slide"></div>
-				<div class="slide"></div>
-				<div class="slide"></div>
+				<div class="slide" data-slide="0">
+					<img src="images/image-product-1.jpg" alt="shoes image" />
+				</div>
+				<div class="slide" data-slide="1">
+					<img
+						src="images/image-product-2.jpg"
+						alt="shoes image"
+						loading="lazy"
+					/>
+				</div>
+				<div class="slide" data-slide="2">
+					<img
+						src="images/image-product-3.jpg"
+						alt="shoes image"
+						loading="lazy"
+					/>
+				</div>
+				<div class="slide" data-slide="3">
+					<img
+						src="images/image-product-4.jpg"
+						alt="shoes image"
+						loading="lazy"
+					/>
+				</div>
 
-				<button type="button" class="button-left"></button>
-				<button type="button" class="button-right"></button>
+				<button
+					type="button"
+					class="button-left"
+					aria-label="slider left button"
+				></button>
+				<button
+					type="button"
+					class="button-right"
+					aria-label="slider right button"
+				></button>
 			</div>
+
 			<div class="purchase">
 				<div class="purchase-content">
 					<h1>Sneaker Company</h1>
@@ -99,20 +129,90 @@
 					</div>
 					<div class="input-block">
 						<div class="input">
-							<button type="button" class="decrement"></button>
+							<button
+								type="button"
+								class="decrement"
+								aria-label="button to decrease unity of shoes"
+							></button>
 							<span class="show-unity">0</span>
-							<button type="button" class="increment"></button>
+							<button
+								type="button"
+								class="increment"
+								aria-label="button to increase unity of shoes"
+							></button>
 						</div>
-						<button type="button"><span></span> Add to cart</button>
+						<button type="button" aria-label="add unity to cart">
+							<span></span> Add to cart
+						</button>
 					</div>
 				</div>
 			</div>
+
 			<div class="thumbnail-container">
-				<div class="thumbnail thumbnail-selected" data-thumb="0"></div>
+				<div class="thumbnail" data-thumb="0"></div>
 				<div class="thumbnail" data-thumb="1"></div>
 				<div class="thumbnail" data-thumb="2"></div>
 				<div class="thumbnail" data-thumb="3"></div>
 			</div>
 		</main>
+
+		<div class="lightbox-modal">
+			<div class="close-lightbox-container">
+				<button
+					type="button"
+					class="button-close-lightbox"
+					aria-label="close modal"
+				></button>
+			</div>
+
+			<div class="lightbox-slider">
+				<div class="lightbox-slide" data-slide="0">
+					<img
+						src="images/image-product-1.jpg"
+						alt="shoes image"
+						loading="lazy"
+					/>
+				</div>
+				<div class="lightbox-slide" data-slide="1">
+					<img
+						src="images/image-product-2.jpg"
+						alt="shoes image"
+						loading="lazy"
+					/>
+				</div>
+				<div class="lightbox-slide" data-slide="2">
+					<img
+						src="images/image-product-3.jpg"
+						alt="shoes image"
+						loading="lazy"
+					/>
+				</div>
+				<div class="lightbox-slide" data-slide="3">
+					<img
+						src="images/image-product-4.jpg"
+						alt="shoes image"
+						loading="lazy"
+					/>
+				</div>
+
+				<button
+					type="button"
+					class="lightbox-button-left"
+					aria-label="slider left button"
+				></button>
+				<button
+					type="button"
+					class="lightbox-button-right"
+					aria-label="slider right button"
+				></button>
+			</div>
+
+			<div class="lightbox-thumbnail-container">
+				<div class="thumbnail" data-thumb="0"></div>
+				<div class="thumbnail" data-thumb="1"></div>
+				<div class="thumbnail" data-thumb="2"></div>
+				<div class="thumbnail" data-thumb="3"></div>
+			</div>
+		</div>
 	</body>
 </html>
