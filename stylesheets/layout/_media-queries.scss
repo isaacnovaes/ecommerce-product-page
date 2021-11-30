@@ -235,6 +235,7 @@
 
 	.lightbox-modal {
 		@include mixin.container;
+		width: 500px;
 		height: 80vh;
 		margin-top: 10vh;
 		position: absolute;
@@ -246,7 +247,7 @@
 		row-gap: 20px;
 
 		.close-lightbox-container {
-			width: 500px;
+			width: 100%;
 			display: flex;
 			justify-content: flex-end;
 

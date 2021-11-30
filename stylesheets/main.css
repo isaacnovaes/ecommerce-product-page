@@ -206,6 +206,7 @@ main .slider .slide img {
   width: 100%;
   height: 300px;
   object-fit: cover;
+  object-position: center;
 }
 main .slider .button-left {
   left: 10px;
@@ -550,6 +551,7 @@ main .purchase .purchase-content .input-block > button:hover {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    width: 500px;
     height: 80vh;
     margin-top: 10vh;
     position: absolute;
@@ -560,7 +562,7 @@ main .purchase .purchase-content .input-block > button:hover {
     row-gap: 20px;
   }
   .lightbox-modal .close-lightbox-container {
-    width: 500px;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
   }
