@@ -40,10 +40,15 @@ const updateCart = () => {
 	basketShoesUnityIcon.textContent = +shoesUnity.textContent;
 	basketShoesUnityIcon.classList.add("show-cart-number");
 
+	// new URL("./images/image-product-1.jpg", import.meta.url);
+	// It's how parcel access images from within JS
+	// It's necessary so the a build can be done successfully 
+	// for more info, check https://parceljs.org/languages/javascript/#url-dependencies
+
 	basketContainer.innerHTML = `
 	<div class="detail">
 		<img
-			src="images/image-product-1.jpg"
+			src="${new URL("./images/image-product-1.jpg", import.meta.url)}"
 			alt="Shoes image"
 			height="60"
 			width="60"
