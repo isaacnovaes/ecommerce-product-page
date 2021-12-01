@@ -5,7 +5,7 @@ header {
 	align-items: center;
 	height: 80px;
 	position: relative;
-	z-index: 1;
+	z-index: 2;
 
 	nav {
 		@include mixin.container;
@@ -21,9 +21,144 @@ header {
 				display: none;
 			}
 		}
+
+		.basket {
+			position: absolute;
+			z-index: 5;
+			bottom: -220px;
+			right: 0;
+			width: 100%;
+			margin: 0 auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			background-color: var(--white);
+			border-radius: 10px;
+			box-shadow: 0 0 30px var(--grayish-blue);
+			color: var(--dark-grayish-blue);
+			font-weight: 700;
+			visibility: hidden;
+			opacity: 0;
+
+			> p {
+				width: 100%;
+				padding: 15px 20px;
+				color: var(--black);
+				font-weight: 700;
+				font-size: 1.1rem;
+				border-bottom: 1px solid var(--grayish-blue);
+			}
+
+			.basket-container {
+				width: 100%;
+				margin-top: 20px;
+				padding: 0 20px;
+				display: grid;
+				place-items: center;
+				height: 140px;
+
+				.detail {
+					width: 100%;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					margin-bottom: 20px;
+
+					img {
+						border-radius: 10px;
+					}
+
+					.shoes-detail-container {
+						color: var(--dark-grayish-blue);
+
+						.shoes-total-price {
+							color: var(--black);
+							font-weight: 700;
+						}
+					}
+
+					button {
+						display: block;
+						padding: 20px;
+						border: none;
+						width: 25px;
+						height: calc(25px * 16 / 14);
+						background: url("../images/icon-delete.svg") no-repeat center;
+
+						&:hover {
+							cursor: pointer;
+						}
+					}
+				}
+
+				> button {
+					display: flex;
+					justify-content: center;
+					width: 100%;
+					padding: 10px;
+					margin-bottom: 20px;
+					border: none;
+					border-radius: 10px;
+					background-color: var(--orange);
+					color: var(--white);
+					font-weight: 700;
+
+					&:hover {
+						opacity: 0.8;
+						transform: scale(1.1);
+						cursor: pointer;
+					}
+				}
+			}
+
+			.cart-empty {
+				display: none;
+			}
+		}
+
+		.basket-active {
+			visibility: visible;
+			opacity: 1;
+		}
+
 		.nav-right {
 			@include mixin.center-nav-elements;
 			width: 70px; // change width for desktop
+
+			.cart-icon {
+				position: relative;
+
+				img {
+					position: relative;
+					z-index: 1;
+				}
+
+				span {
+					display: block;
+					width: 20px;
+					height: 20px;
+					line-height: 20px; //center text vertically
+					position: absolute;
+					z-index: 2;
+					top: -10px;
+					right: -10px;
+					background-color: var(--orange);
+					border-radius: 10px;
+					color: var(--white);
+					text-align: center;
+					font-size: 0.8rem;
+					font-weight: 700;
+					pointer-events: none;
+					transform: translateY(10px);
+					opacity: 0;
+				}
+
+				.show-cart-number {
+					transform: translateY(0);
+					opacity: 1;
+				}
+			}
 
 			img:nth-child(2) {
 				object-fit: contain;
