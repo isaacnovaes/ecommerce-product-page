@@ -22,7 +22,62 @@ const lightboxThumbnailContainer = document.querySelector(
 const closeLightbox = document.querySelector(".button-close-lightbox");
 const lightboxModal = document.querySelector(".lightbox-modal");
 
+const cartIcon = document.querySelector(".nav-right img");
+const basket = document.querySelector("nav .basket");
+
+const incrementButton = document.querySelector(".increment");
+const decrementButton = document.querySelector(".decrement");
+const shoesUnity = document.querySelector(".show-unity");
+const basketContainer = document.querySelector(".basket-container");
+const basketShoesUnityIcon = document.querySelector(".cart-icon span");
+const addToCartButton = document.querySelector(".input-block > button");
+
 let currentSlide = 0;
+
+/////////////////////////////////////////////////
+// Update UI based on local storage
+const updateCart = () => {
+	basketShoesUnityIcon.textContent = +shoesUnity.textContent;
+	basketShoesUnityIcon.classList.add("show-cart-number");
+
+	basketContainer.innerHTML = `
+	<div class="detail">
+		<img
+			src="images/image-product-1.jpg"
+			alt="Shoes image"
+			height="60"
+			width="60"
+		/>
+		<div class="shoes-detail-container">
+			<p>Autumn Limited Edition...</p>
+			<div class="shoes-detail">
+				<span>$125.00 x </span>
+				<span class="shoes-unity">${+shoesUnity.textContent}</span>
+				<span class="shoes-total-price">$${(+shoesUnity.textContent * 125).toFixed(
+					2
+				)}</span>
+			</div>
+		</div>
+		<button type="button" class="erase-basket"></button>
+	</div>
+	<button type="button" class="checkout">Checkout</button>`;
+
+	const eraseBasket = document.querySelector(".erase-basket");
+
+	eraseBasket.addEventListener("click", () => {
+		const basketHeight = parseFloat(getComputedStyle(basketContainer).height);
+		basketContainer.innerHTML = "Your Cart is empty";
+		basketContainer.style.height = `${basketHeight}px`;
+		basketShoesUnityIcon.classList.remove("show-cart-number");
+
+		localStorage.removeItem("shoesToBuy");
+	});
+};
+
+if (localStorage.getItem("shoesToBuy")) {
+	shoesUnity.textContent = +localStorage.getItem("shoesToBuy");
+	updateCart();
+}
 
 /////////////////////////////////////////////////
 // handles hamburger toggle
@@ -146,7 +201,7 @@ document.addEventListener("keydown", event => {
 });
 
 /////////////////////////////////////////////////
-// handles lightbox modal closing 
+// handles lightbox modal closing
 const toggleLightboxModal = () => {
 	bgBlurDesktop.classList.toggle("show-bg");
 	lightboxModal.classList.toggle("show-lightbox-modal");
@@ -165,4 +220,27 @@ document.addEventListener("keydown", event => {
 	if (!lightboxModal.classList.contains("show-lightbox-modal")) return;
 
 	if (event.key === "Escape") toggleLightboxModal();
+});
+
+cartIcon.addEventListener("click", () => {
+	basket.classList.toggle("basket-active");
+});
+
+////////////////////////////////////////////////
+// Cart functionality
+
+incrementButton.addEventListener("click", () => {
+	shoesUnity.textContent = +shoesUnity.textContent + 1;
+});
+
+decrementButton.addEventListener("click", () => {
+	if (+shoesUnity.textContent === 1) return;
+
+	shoesUnity.textContent = +shoesUnity.textContent - 1;
+});
+
+addToCartButton.addEventListener("click", () => {
+	updateCart();
+
+	localStorage.setItem("shoesToBuy", `${shoesUnity.textContent}`);
 });
