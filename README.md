@@ -17,7 +17,6 @@ This is a solution to the [E-commerce product page challenge on Frontend Mentor]
   - [My process](#my-process)
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
-    - [Continued development](#continued-development)
 
 ## Overview
 
@@ -34,7 +33,11 @@ Users should be able to:
 
 ### Screenshot
 
-<!-- ![](./screenshot.jpg) -->
+[Mobile](design/mobile-design.jpg)
+
+[Desktop](design/desktop-design.jpg)
+
+[Cart](design/active-states-basket-filled.jpg)
 
 ### Links
 
@@ -51,13 +54,9 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - JavaScript
+- Animations
+- Local Storage
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+It was the first time that I practiced building a slider component. Before, I thought that it would be really hard, but after searching how to do it, I got the it is much more logical and straight forward than what I thought.
