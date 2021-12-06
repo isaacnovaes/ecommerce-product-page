@@ -10,6 +10,7 @@ This is a solution to the [E-commerce product page challenge on Frontend Mentor]
 
 - [Frontend Mentor - E-commerce product page solution](#frontend-mentor---e-commerce-product-page-solution)
   - [Table of contents](#table-of-contents)
+  - [How to get this project ready on your machine](#how-to-get-this-project-ready-on-your-machine)
   - [Overview](#overview)
     - [The challenge](#the-challenge)
     - [Screenshot](#screenshot)
@@ -18,6 +19,25 @@ This is a solution to the [E-commerce product page challenge on Frontend Mentor]
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
 
+## How to get this project ready on your machine
+
+Run the following commands:
+
+```js
+git clone https://github.com/isaacnovaes/ecommerce-product-page //1
+
+cd ecommerce-product-page                                       //2
+
+npm i                                                           //3
+
+npm run sass                                                    //4
+```
+
+- //1 clones the project repository
+- //2 directs you to the project folder
+- //3 installs dependencies
+- //4 initiates sass compiler
+  
 ## Overview
 
 ### The challenge
