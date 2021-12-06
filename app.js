@@ -42,7 +42,7 @@ const updateCart = () => {
 
 	// new URL("./images/image-product-1.jpg", import.meta.url);
 	// It's how parcel access images from within JS
-	// It's necessary so the a build can be done successfully 
+	// It's necessary so the a build can be done successfully
 	// for more info, check https://parceljs.org/languages/javascript/#url-dependencies
 
 	basketContainer.innerHTML = `
@@ -68,6 +68,7 @@ const updateCart = () => {
 	<button type="button" class="checkout">Checkout</button>`;
 
 	const eraseBasket = document.querySelector(".erase-basket");
+	const checkoutButton = document.querySelector(".checkout");
 
 	eraseBasket.addEventListener("click", () => {
 		const basketHeight = parseFloat(getComputedStyle(basketContainer).height);
@@ -75,6 +76,14 @@ const updateCart = () => {
 		basketContainer.style.height = `${basketHeight}px`;
 		basketShoesUnityIcon.classList.remove("show-cart-number");
 
+		localStorage.removeItem("shoesToBuy");
+	});
+
+	checkoutButton.addEventListener("click", () => {
+		document.body.classList.add("checkout-body");
+		document.body.innerHTML = `
+		<p>Thank you for trying out this app!</p>
+		`;
 		localStorage.removeItem("shoesToBuy");
 	});
 };
