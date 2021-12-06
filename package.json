@@ -1,0 +1,29 @@
+{
+	"name": "ecommerce-product-page",
+	"version": "1.0.0",
+	"description": "Frontend Mentor - E-commerce product page solution",
+	"private": true,
+	"scripts": {
+		"start": "parcel index.html",
+		"build": "parcel build index.html",
+		"sass": "sass --watch stylesheets/main.scss stylesheets/main.css"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/isaacnovaes/ecommerce-product-page.git"
+	},
+	"keywords": [],
+	"author": "Isaac Novaes",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/isaacnovaes/ecommerce-product-page/issues"
+	},
+	"homepage": "https://github.com/isaacnovaes/ecommerce-product-page#readme",
+	"devDependencies": {
+		"@parcel/transformer-sass": "^2.0.1",
+		"parcel": "^2.0.1"
+	},
+	"dependencies": {
+		"sass": "^1.43.5"
+	}
+}
