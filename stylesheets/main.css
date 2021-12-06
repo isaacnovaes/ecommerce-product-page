@@ -462,6 +462,15 @@ main .purchase .purchase-content .input-block > button:hover {
   display: none;
 }
 
+.checkout-body {
+  display: grid;
+  place-items: center;
+}
+.checkout-body * {
+  color: var(--orange);
+  font-size: 2rem;
+}
+
 @media screen and (min-width: 500px) and (max-width: 899px) {
   header nav .basket {
     right: -5px;

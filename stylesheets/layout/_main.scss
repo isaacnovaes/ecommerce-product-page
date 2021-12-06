@@ -181,3 +181,13 @@ main {
 .lightbox-modal {
 	display: none;
 }
+
+.checkout-body {
+	display: grid;
+	place-items: center;
+
+	* {
+		color: var(--orange);
+		font-size: 2rem;
+	}
+}
